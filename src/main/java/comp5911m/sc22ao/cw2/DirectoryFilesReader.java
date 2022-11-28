@@ -5,15 +5,18 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class DirectoryFilesReader {
     private final String directory;
+    private final List<String> fileExtensions;
 
-    public DirectoryFilesReader(String directory) {
-        this.directory = directory;
+    public DirectoryFilesReader(String[] args) {
+        this.directory = findDirectoryToPerformAnalysis(args);
+        this.fileExtensions = findFileExtensionsToBeAnalyzed(args);
     }
 
     public List<String> getAllFilesOfType(String fileType) {
@@ -37,5 +40,27 @@ public class DirectoryFilesReader {
         }
 
         return allFiles;
+    }
+
+    private String findDirectoryToPerformAnalysis(String[] args) {
+        String directoryToPerformAnalysis;
+        if (args.length == 0) {
+            directoryToPerformAnalysis = System.getProperty("user.dir");
+        } else {
+            directoryToPerformAnalysis = args[0];
+        }
+        return directoryToPerformAnalysis;
+    }
+
+    private List<String> findFileExtensionsToBeAnalyzed(String[] args) {
+        if (args.length < 2) {
+            return new ArrayList<>();
+        } else {
+            return new ArrayList<>(Arrays.asList(args).subList(1, args.length));
+        }
+    }
+
+    public List<String> getFileTypesToBeAnalysed() {
+        return fileExtensions;
     }
 }

@@ -18,6 +18,7 @@ public class PythonComplexityMetricsListener extends PythonParserBaseListener im
         } else {
             if (ctx.getText().equalsIgnoreCase("case")
                     || ctx.getText().equalsIgnoreCase("if")
+                    || ctx.getText().equalsIgnoreCase("elif")
                     || ctx.getText().equalsIgnoreCase("and")
                     || ctx.getText().equalsIgnoreCase("or")
                     || ctx.getText().equalsIgnoreCase("for")
