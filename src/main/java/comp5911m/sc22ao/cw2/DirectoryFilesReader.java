@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class DirectoryFilesReader {
@@ -28,12 +27,12 @@ public class DirectoryFilesReader {
                         .filter(Files::isRegularFile)
                         .map(Path::toString)
                         .filter(file -> fileType.equals(file.substring(file.lastIndexOf(".") + 1)))
-                        .collect(Collectors.toList());
+                        .toList();
             } else {
                 allFiles = allPaths
                         .filter(Files::isRegularFile)
                         .map(Path::toString)
-                        .collect(Collectors.toList());
+                        .toList();
             }
         } catch (IOException ex) {
             System.out.println("Error reading all files: " + ex.getMessage());

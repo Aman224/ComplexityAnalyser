@@ -3,8 +3,6 @@ package comp5911m.sc22ao.cw2;
 import comp5911m.sc22ao.cw2.complexity_analysis.ComplexityAnalyser;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MetricsReporterApplication {
@@ -33,7 +31,7 @@ public class MetricsReporterApplication {
                     System.out.println("No files of type " + fileExtension + " detected in the directory");
                 }
             } catch (IllegalArgumentException e) {
-                System.out.println("Error: " + e.getMessage());
+                System.err.println("Error: " + e.getMessage());
             }
         }
     }

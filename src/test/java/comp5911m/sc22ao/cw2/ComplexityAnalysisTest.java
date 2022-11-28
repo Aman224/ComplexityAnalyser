@@ -3,7 +3,9 @@ package comp5911m.sc22ao.cw2;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 
 public class ComplexityAnalysisTest {
@@ -19,13 +21,15 @@ public class ComplexityAnalysisTest {
 
     @Test
     void readingJavaFiles() {
-        DirectoryFilesReader directoryFilesReader = new DirectoryFilesReader(System.getProperty("user.dir"));
-        directoryFilesReader.getAllFilesOfType("java");
+        String[] args = new String[] { System.getProperty("user.dir"), "java" };
+        DirectoryFilesReader directoryFilesReader = new DirectoryFilesReader(args);
+        assertDoesNotThrow(() -> directoryFilesReader.getAllFilesOfType("java"));
     }
 
     @Test
     void readingPythonFiles() {
-        DirectoryFilesReader directoryFilesReader = new DirectoryFilesReader(System.getProperty("user.dir"));
-        directoryFilesReader.getAllFilesOfType("java");
+        String[] args = new String[] { System.getProperty("user.dir"), "python" };
+        DirectoryFilesReader directoryFilesReader = new DirectoryFilesReader(args);
+        assertDoesNotThrow(() -> directoryFilesReader.getAllFilesOfType("python"));
     }
 }
