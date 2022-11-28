@@ -14,11 +14,10 @@ This application uses gradle to build the jar file. To build the application fol
 1. Navigate to the root directory of the zip file
 2. Run the command
 
-```
-./gradlew build
-```
 
-This will generate a .jar file <i>task2-1.0-SNAPSHOT.jar</i>
+    ./gradlew build
+
+This will generate a .jar file inside the ./build/libs folder called <i>task2-1.0-SNAPSHOT.jar</i>
 
 ## Running the application
 
@@ -36,20 +35,25 @@ The application takes two command line arguments to run
 - <b>directory_argument</b>: The directory to be considered for the complexity analysis. If the directory argument is not given the <b>current working directory</b> will be considered for the analysis
 - <b>file_types_argument:</b> A list of the file extensions to be analysed. Currently supported [java, py]. If the argument is not given a default value of <b>java</b> is assumed if not specified.
 
+eg:
+
+    java -jar task2-1.0-SNAPSHOT.jar /home/tmp/ java py
+
+This code snippet will find the complexity of all java and python files in the /home/tmp/ directory
 
 ## Run Tests
 
 The unit tests for the application can be run using
-```
-./gradlew test
-```
+
+    ./gradlew test
+
 
 ## Parser Generation
 
 We use antlr4 to generate parsers for any given programming languages. This version of the application contains parsers for java and python. The .g4 files used for generating the parser has been provided in the src/main/antlr4 folder. The command to generate the parser is given below
-```
-antlr4 -o <output_path> -package <parser_output_package_name> -listener -visitor -lib <location_grammars> <grammar_path>
-```
+
+    antlr4 -o <output_path> -package <parser_output_package_name> -listener -visitor -lib <location_grammars> <grammar_path>
+
 - <b>output_path</b>: Specifies the output location of the generated parser
 - <b>parser_output_package_name</b>: Specifies the package name to be used for the generated parser java files
 - <b>location_grammars</b>: Specifies the directory where the grammar files are located
