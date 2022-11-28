@@ -1,5 +1,7 @@
 # ComplexityAnalyser
 
+## Advanced Software Engineering COMP5911M CourseWork 2 Q4 complexity calculator
+
 ## Introduction
 
 This application calculates the average and maximum complexity of classes / files using McConnell’s simplified approach for complexity analysis. We make use of [antlr4](https://www.antlr.org/) which is a tool that can be used to generate a parser based on a given grammar. This tool had been used to generate a parser for parsing Java and Python code (more language support may be added). The grammar used is the grammar for [java](https://github.com/antlr/grammars-v4/tree/master/java/java) and [python](https://github.com/antlr/grammars-v4/tree/master/python/python) provided by antlr4. More information about the parser generation is given in the section Parser Generation.
